@@ -7,9 +7,7 @@ def synthesize_folder_of_csv_files(
             "dispersion_factor" : 0.05,
             "winsorize_lower_limit" : 0.05,
             "winsorize_upper_limit" : 0.95
-        }
-
-        
+        }        
 ):
     # If a dd_obs has not been provided, then
     # generate dd_obs (summary statistics) based on the input folder of CSV files
@@ -36,6 +34,7 @@ def synthesize_folder_of_csv_files(
 
 def generate_dd_obs(path_to_input_folder_of_csv_files):
     pass
+
 
 def create_dd_synth(dd_obs):
     pass

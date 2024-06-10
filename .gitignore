@@ -1,0 +1,12 @@
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore dynamically generated output files
+examples/output/*
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore macOS system files
+.DS_Store
