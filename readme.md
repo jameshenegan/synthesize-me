@@ -22,6 +22,12 @@ cd examples
 python generate_sample_data.py
 ```
 
+Then, generate the `dd_obs.csv` file:
+
+```bash
+python generate_dd_obs.py
+```
+
 Once we develop the package, use the following code to synthesize the data:
 
 ```
@@ -34,3 +40,9 @@ dd_obs, dd_synth = synthesize_folder_of_csv_files(input_path, output_path)
 ```
 
 The synthetic data will be saved in the examples/output directory.
+
+# Next Steps
+
+- Create a sub-folder called `metadata` inside of the `examples` folder
+- Add an example `dd_obs` to the `metadata` folder
+- Add an example `dd_synth` to the `metadata` folder
