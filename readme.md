@@ -28,6 +28,12 @@ Then, generate the `dd_obs.csv` file:
 python generate_dd_obs.py
 ```
 
+Finally, generate the `dd_synth.csv` file:
+
+```bash
+python generate_dd_synth.py
+```
+
 Once we develop the package, use the following code to synthesize the data:
 
 ```
@@ -43,6 +49,4 @@ The synthetic data will be saved in the examples/output directory.
 
 # Next Steps
 
-- Create a sub-folder called `metadata` inside of the `examples` folder
-- Add an example `dd_obs` to the `metadata` folder
-- Add an example `dd_synth` to the `metadata` folder
+- Write a first draft of a function called something like `synthesize_continuous_series`
