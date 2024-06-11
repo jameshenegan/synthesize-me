@@ -35,9 +35,6 @@ def synthesize_folder_of_csv_files(
 
 
 
-def create_dd_synth(dd_obs):
-    pass
-
 
 def create_csv_files_of_synth_data(
         dd_synth,
