@@ -1,3 +1,5 @@
+from synthesize_me.generate_dd_obs import generate_dd_obs
+
 def synthesize_folder_of_csv_files(
         path_to_input_folder_of_csv_files,
         path_to_output_folder_of_csv_files,
@@ -31,9 +33,6 @@ def synthesize_folder_of_csv_files(
     # Return the dd_obs and the dd_synth
     return dd_obs, dd_synth
 
-
-def generate_dd_obs(path_to_input_folder_of_csv_files):
-    pass
 
 
 def create_dd_synth(dd_obs):

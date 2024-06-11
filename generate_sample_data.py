@@ -71,7 +71,7 @@ def generate_sample_data(output_dir, n=1000, seed=42):
 
     # Create a DataFrame for the third CSV file
     df3 = pd.DataFrame({
-        'Binomial_n10_p0.5': col12,
+        'Binomial_n10_p_one_half': col12,
         'Poisson_Lambda3': col13,        
     })
 
@@ -81,4 +81,4 @@ def generate_sample_data(output_dir, n=1000, seed=42):
     print(f"CSV files 'sample1.csv', 'sample2.csv', and 'sample3.csv' created successfully in {output_dir}.")
 
 if __name__ == '__main__':
-    generate_sample_data('input')
+    generate_sample_data('example-data/input')
