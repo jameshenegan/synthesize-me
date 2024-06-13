@@ -84,41 +84,55 @@ The main idea is that the package uses the information derived from the `dd_obs`
 
 ## Example Usage
 
+This section demonstrates how to create sample data and metadata that can be used to develop and test the `synthesize_me` package. The example involves generating synthetic data, creating metadata, and using this metadata to generate new synthetic data.
+
 ### Create Sample Data and Metadata to be used by the package
 
 #### Generate Sample Data
 
-First, generate some sample data:
+First, we will generate some sample data "out of thin air" using the `generate_sample_data.py` script. This script creates CSV files with various distributions to simulate real-world data.
+
+Run the following command to generate sample data:
 
 ```bash
 python generate_sample_data.py example-data/input --n 500 --seed 123
 ```
 
-This should create some CSV files in `./example-data/input`.
+This should create some CSV files in the `./example-data/input` directory. The generated files will contain synthetic data based on different statistical distributions, which can be used for developing and testing the `synthesize_me` package.
 
 #### Generate Sample Metadata
 
+Next, we will generate metadata for the sample data. This metadata will include summary statistics and synthesis instructions.
+
 ##### A Sample `dd_obs.csv` file
 
-Then, generate the `dd_obs.csv` file:
+First, we generate the `dd_obs.csv` file, which contains summary statistics for the sample data. The `generate_dd_obs.py` script reads the sample data and creates this metadata file.
+
+Run the following command to generate the `dd_obs.csv` file:
 
 ```bash
 python generate_dd_obs.py example-data/input example-data/metadata/dd_obs.csv
 ```
 
-This should create the following CSV file: `./example-data/metadata/dd_obs.csv`.
+This should create the following CSV file: `./example-data/metadata/dd_obs.csv`. This file contains information about the distributions of the variables in the sample data, which is essential for generating synthesis instructions.
 
 ##### A Sample `dd_synth.csv` file
 
-Finally, generate the `dd_synth.csv` file:
+Next, we generate the `dd_synth.csv` file, which contains synthesis instructions based on the `dd_obs.csv` metadata. The `generate_dd_synth.py` script reads the `dd_obs.csv` file and creates the `dd_synth.csv` file with default parameters.
+
+Run the following command to generate the `dd_synth.csv` file:
 
 ```bash
 python generate_dd_synth.py example-data/metadata/dd_obs.csv example-data/metadata/dd_synth.csv
 ```
 
+This should create the following CSV file: `./example-data/metadata/dd_synth.csv`. This file contains instructions on how to generate new synthetic data based on the distributions and parameters specified in the metadata.
+
 ### Creating Synthetic Data from the Sample Data
 
-Once the package is developed, use the following code to synthesize the data:
+Finally, we use the `synthesize_me` package to generate synthetic data based on the sample data and the metadata we created. The `synthesize_folder_of_csv_files` function reads the input data and metadata, and produces synthetic versions of the CSV files.
+
+Use the following code to synthesize the data:
 
 ```python
 from synthesize_me import synthesize_folder_of_csv_files
@@ -129,4 +143,4 @@ output_path = 'example-data/output'
 dd_obs, dd_synth = synthesize_folder_of_csv_files(input_path, output_path)
 ```
 
-The synthetic data should be saved in the `example-data/output` directory.
+The synthetic data should be saved in the `example-data/output` directory. This synthetic data can be used for further testing and development, ensuring that the `synthesize_me` package works correctly with various types of data.
