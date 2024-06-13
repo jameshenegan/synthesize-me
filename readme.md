@@ -6,7 +6,7 @@ The `synthesize_me` Python package generates synthetic versions of CSV files, al
 
 Given:
 
-- a path to an input folder of CSV files and
+- a path to an input folder of CSV files, and
 - a path to an empty output folder,
 
 `synthesize_me` will generate synthetic versions of the CSV files in the input folder and write them to disk in the output folder. Optionally, users can fine-tune aspects of the synthetic data generation process to suit their specific needs.
@@ -46,7 +46,7 @@ The datatype influences the manner in which the synthetic data is generated.
 The other columns of the `dd_synth` are relevant for only specific data types.
 
 - **dispersion_amount**: The standard deviation of the normal distribution used to generate the noise added to the real data to create the synthetic data. This is relevant for Decimals.
-- **winsorize_lower_limit** and **winsorize_lower_limit** : These parameters define the limits for Winsorization during the creation of synthetic data. The lowest values are adjusted to the value at the `winsorize_lower_limit` percentile, and the highest values are adjusted to the value at the `winsorize_upper_limit` percentile. Masked values are ignored during this process. This is relevant for Decimal.
+- **winsorize_lower_limit** and **winsorize_upper_limit**: These parameters define the limits for Winsorization during the creation of synthetic data. The lowest values are adjusted to the value at the `winsorize_lower_limit` percentile, and the highest values are adjusted to the value at the `winsorize_upper_limit` percentile. Masked values are ignored during this process. This is relevant for Decimals.
 
 ## Kick-starting the `dd_synth` with `dd_obs` and `blanket_default_params`
 
@@ -58,7 +58,7 @@ First, the package generates a DataFrame called `dd_obs`. This DataFrame contain
 
 - **table_name**: The name of the table containing the variable (corresponding to the CSV file name without the `.csv` extension).
 - **var_name**: The name of the variable.
-- **obs_datatype**: The inferred data type of the variable (e.g., String, Decimal, Integer, NumberList, etc.).
+- **obs_datatype**: The inferred data type of the variable (e.g., String, Decimal, Integer, Numberlist, etc.).
 
 Additionally, `dd_obs` includes various summary statistics for each variable, which depend on the `obs_datatype`. For example, for decimal variables, the summary statistics include:
 
@@ -88,7 +88,7 @@ The main idea is that the package uses the information derived from the `dd_obs`
 
 #### Generate Sample Data
 
-First generate some sample data:
+First, generate some sample data:
 
 ```bash
 python generate_sample_data.py
@@ -118,9 +118,9 @@ python generate_dd_synth.py
 
 ### Creating Synthetic Data from the Sample Data
 
-Once we develop the package, use the following code to synthesize the data:
+Once the package is developed, use the following code to synthesize the data:
 
-```
+```python
 from synthesize_me import synthesize_folder_of_csv_files
 
 input_path = 'example-data/input'
