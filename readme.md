@@ -103,7 +103,7 @@ This should create some CSV files in `./example-data/input`.
 Then, generate the `dd_obs.csv` file:
 
 ```bash
-python generate_dd_obs.py
+python generate_dd_obs.py example-data/input example-data/metadata/dd_obs.csv
 ```
 
 This should create the following CSV file: `./example-data/metadata/dd_obs.csv`.
