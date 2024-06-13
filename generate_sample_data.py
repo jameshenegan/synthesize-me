@@ -1,8 +1,18 @@
 import numpy as np
 import pandas as pd
 import os
+import argparse
+import logging
 
 def generate_sample_data(output_dir, n=1000, seed=42):
+    """
+    Generate sample CSV files with synthetic data.
+
+    Parameters:
+    output_dir (str): Directory where the generated CSV files will be saved.
+    n (int): Number of samples to generate for each column. Default is 1000.
+    seed (int): Seed for the random number generator. Default is 42.
+    """
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -67,18 +77,28 @@ def generate_sample_data(output_dir, n=1000, seed=42):
     col12 = np.random.binomial(10, 0.5, n)
 
     # Poisson distribution with lambda = 3
-    col13 = np.random.poisson(3, n)    
+    col13 = np.random.poisson(3, n)
 
     # Create a DataFrame for the third CSV file
     df3 = pd.DataFrame({
         'Binomial_n10_p_one_half': col12,
-        'Poisson_Lambda3': col13,        
+        'Poisson_Lambda3': col13,
     })
 
     # Save to CSV
     df3.to_csv(os.path.join(output_dir, 'sample3.csv'), index=False)
 
-    print(f"CSV files 'sample1.csv', 'sample2.csv', and 'sample3.csv' created successfully in {output_dir}.")
+    logging.info(f"CSV files 'sample1.csv', 'sample2.csv', and 'sample3.csv' created successfully in {output_dir}.")
 
 if __name__ == '__main__':
-    generate_sample_data('example-data/input')
+    parser = argparse.ArgumentParser(description='Generate sample CSV files with synthetic data.')
+    parser.add_argument('output_dir', type=str, help='Directory where the generated CSV files will be saved.')
+    parser.add_argument('--n', type=int, default=1000, help='Number of samples to generate for each column.')
+    parser.add_argument('--seed', type=int, default=42, help='Seed for the random number generator.')
+
+    args = parser.parse_args()
+
+    # Configure logging
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+    generate_sample_data(args.output_dir, n=args.n, seed=args.seed)

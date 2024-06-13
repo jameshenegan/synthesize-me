@@ -91,7 +91,7 @@ The main idea is that the package uses the information derived from the `dd_obs`
 First, generate some sample data:
 
 ```bash
-python generate_sample_data.py
+python generate_sample_data.py example-data/input --n 500 --seed 123
 ```
 
 This should create some CSV files in `./example-data/input`.
