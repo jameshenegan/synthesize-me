@@ -2,14 +2,14 @@
 
 ## Introduction
 
-The `synthesize_me` Python package generates synthetic versions of CSV files, allowing researchers and developers to create realistic data for testing and development without exposing sensitive information.  
+The `synthesize_me` Python package generates synthetic versions of CSV files, allowing researchers and developers to create realistic data for testing and development without exposing sensitive information.
 
 Given:
 
 - a path to an input folder of CSV files and
 - a path to an empty output folder,
 
-`synthesize_me` will generate synthetic versions of the CSV files in the input folder and write them to disk in the output folder.  Optionally, users can fine-tune aspects of the synthetic data generation process to suit their specific needs.  
+`synthesize_me` will generate synthetic versions of the CSV files in the input folder and write them to disk in the output folder. Optionally, users can fine-tune aspects of the synthetic data generation process to suit their specific needs.
 
 ## Installation
 
@@ -19,19 +19,17 @@ Given:
 
 (TODO: Add usage instructions once the package is finished)
 
-## Fine-Tuning with `dd_synth` 
-
+## Fine-Tuning with `dd_synth`
 
 The `dd_synth` DataFrame allows users to fine-tune aspects of the synthetic data generation process. It serves as both a data dictionary and a set of synthesis instructions.
 
- ### Structure of `dd_synth`
+### Structure of `dd_synth`
 
-| table_name  | var_name | datatype   | dispersion_amount | winsorize_lower_limit | winsorize_upper_limit |
-|-------------|----------|------------|-------------------|-----------------------|-----------------------|
-| demographics| age      | Integer    |                   |                       |                       |
-| demographics| gender   | Stringlist |                   |                       |                       |
-| sales       | amount   | Decimal    | 12.5              | 0.05                  | 0.95                  |
-
+| table_name   | var_name | datatype   | dispersion_amount | winsorize_lower_limit | winsorize_upper_limit |
+| ------------ | -------- | ---------- | ----------------- | --------------------- | --------------------- |
+| demographics | age      | Integer    |                   |                       |                       |
+| demographics | gender   | Stringlist |                   |                       |                       |
+| sales        | amount   | Decimal    | 12.5              | 0.05                  | 0.95                  |
 
 - **table_name**: The name of the table containing the variable. This corresponds to the CSV file name without the `.csv` extension.
 - **var_name**: The name of the variable.
@@ -42,15 +40,13 @@ The `dd_synth` DataFrame allows users to fine-tune aspects of the synthetic data
   - Numberlist: a column of integers with a few unique values
   - Stringlist: a column of strings with a few unique values
   - DateTime: a column of DateTime-like values
-  
+
 The datatype influences the manner in which the synthetic data is generated.
-  
+
 The other columns of the `dd_synth` are relevant for only specific data types.
 
-- **dispersion_amount**: The standard deviation of the normal distribution used to generate the noise added to the real data to create the synthetic data.  This is relevant for Decimals.
-- **winsorize_lower_limit** and **winsorize_lower_limit**  : These parameters define the limits for Winsorization during the creation of synthetic data. The lowest values are adjusted to the value at the `winsorize_lower_limit` percentile, and the highest values are adjusted to the value at the `winsorize_upper_limit` percentile. Masked values are ignored during this process. This is relevant for Decimal.
-
-
+- **dispersion_amount**: The standard deviation of the normal distribution used to generate the noise added to the real data to create the synthetic data. This is relevant for Decimals.
+- **winsorize_lower_limit** and **winsorize_lower_limit** : These parameters define the limits for Winsorization during the creation of synthetic data. The lowest values are adjusted to the value at the `winsorize_lower_limit` percentile, and the highest values are adjusted to the value at the `winsorize_upper_limit` percentile. Masked values are ignored during this process. This is relevant for Decimal.
 
 ## Kick-starting the `dd_synth` with `dd_obs` and `blanket_default_params`
 
@@ -85,7 +81,6 @@ Next, the package uses `blanket_default_params` to automatically create the `dd_
 - **winsorize_upper_limit**: For example, 0.95. This value is set as the `winsorize_upper_limit` for all decimal variables.
 
 The main idea is that the package uses the information derived from the `dd_obs` and combines it with the `blanket_default_params` to automatically create a `dd_synth`, making the process of generating synthetic data more efficient and user-friendly.
-
 
 ## Example Usage
 
@@ -138,7 +133,7 @@ The synthetic data should be saved in the `example-data/output` directory.
 
 # Next Steps
 
-- Update the readme by adding information about the `dd_obs`
+- Update documentation
+  - `./synthesize_me/generate_dd_obs/readme.md`
+  - `./synthesize_me/create_dd_synth/readme.md`
 - Write a first draft of a function called something like `synthesize_continuous_series`
-
-

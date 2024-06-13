@@ -1,12 +1,6 @@
 import pandas as pd
 
-def create_dd_synth(dd_obs):
-    
-    blanket_default_params = {        
-        "dispersion_factor": 0.05,
-        "winsorize_lower_limit": 0.05,
-        "winsorize_upper_limit": 0.95
-    }
+def create_dd_synth(dd_obs, blanket_default_params):    
 
     # Initialize list to hold dd_synth data
     dd_synth_data = []

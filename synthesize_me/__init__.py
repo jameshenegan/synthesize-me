@@ -1,4 +1,5 @@
 from synthesize_me.generate_dd_obs import generate_dd_obs
+from synthesize_me.create_dd_synth import create_dd_synth
 
 def synthesize_folder_of_csv_files(
         path_to_input_folder_of_csv_files,
