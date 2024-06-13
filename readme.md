@@ -130,10 +130,3 @@ dd_obs, dd_synth = synthesize_folder_of_csv_files(input_path, output_path)
 ```
 
 The synthetic data should be saved in the `example-data/output` directory.
-
-# Next Steps
-
-- Update documentation
-  - `./synthesize_me/generate_dd_obs/readme.md`
-  - `./synthesize_me/create_dd_synth/readme.md`
-- Write a first draft of a function called something like `synthesize_continuous_series`
