@@ -113,7 +113,7 @@ This should create the following CSV file: `./example-data/metadata/dd_obs.csv`.
 Finally, generate the `dd_synth.csv` file:
 
 ```bash
-python generate_dd_synth.py
+python generate_dd_synth.py example-data/metadata/dd_obs.csv example-data/metadata/dd_synth.csv
 ```
 
 ### Creating Synthetic Data from the Sample Data

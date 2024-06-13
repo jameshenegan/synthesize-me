@@ -1,11 +1,50 @@
-import pandas as pd 
-
+import argparse
+import logging
+import pandas as pd
 from synthesize_me.create_dd_synth import create_dd_synth
 
-path_to_dd_obs = "./example-data/metadata/dd_obs.csv"
+def main(input_file, output_file, dispersion_factor, winsorize_lower_limit, winsorize_upper_limit):
+    """
+    Generate the dd_synth DataFrame and save it to a CSV file.
 
-dd_obs = pd.read_csv(path_to_dd_obs)
+    Parameters:
+    input_file (str): Path to the dd_obs CSV file.
+    output_file (str): Path to save the generated dd_synth CSV file.
+    dispersion_factor (float): Default dispersion factor for the synthesis.
+    winsorize_lower_limit (float): Default winsorize lower limit for the synthesis.
+    winsorize_upper_limit (float): Default winsorize upper limit for the synthesis.
+    """
+    # Load dd_obs DataFrame
+    logging.info(f"Loading dd_obs from file: {input_file}")
+    dd_obs = pd.read_csv(input_file)
 
-dd_synth = create_dd_synth(dd_obs)
+    # Set blanket default parameters
+    blanket_default_params = {
+        "dispersion_factor": dispersion_factor,
+        "winsorize_lower_limit": winsorize_lower_limit,
+        "winsorize_upper_limit": winsorize_upper_limit
+    }
 
-dd_synth.to_csv("./example-data/metadata/dd_synth.csv", index=False)
+    # Generate dd_synth DataFrame
+    logging.info("Generating dd_synth with default parameters.")
+    dd_synth = create_dd_synth(dd_obs, blanket_default_params)
+
+    # Save dd_synth to CSV
+    logging.info(f"Saving dd_synth to output file: {output_file}")
+    dd_synth.to_csv(output_file, index=False)
+    logging.info("dd_synth generation and saving completed successfully.")
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Generate the dd_synth DataFrame and save it to a CSV file.')
+    parser.add_argument('input_file', type=str, help='Path to the dd_obs CSV file.')
+    parser.add_argument('output_file', type=str, help='Path to save the generated dd_synth CSV file.')
+    parser.add_argument('--dispersion_factor', type=float, default=0.05, help='Default dispersion factor for the synthesis.')
+    parser.add_argument('--winsorize_lower_limit', type=float, default=0.05, help='Default winsorize lower limit for the synthesis.')
+    parser.add_argument('--winsorize_upper_limit', type=float, default=0.95, help='Default winsorize upper limit for the synthesis.')
+
+    args = parser.parse_args()
+
+    # Configure logging
+    logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+    main(args.input_file, args.output_file, args.dispersion_factor, args.winsorize_lower_limit, args.winsorize_upper_limit)
