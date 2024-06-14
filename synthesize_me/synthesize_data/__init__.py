@@ -2,7 +2,7 @@ import pandas as pd
 import os
 from .decimal import synthesize_decimal_column
 from .integer_synthesis import synthesize_integer_column
-from .numberlist_synthesis import synthesize_numberlist_column
+from .numberlist import synthesize_numberlist_column
 
 def create_csv_files_of_synth_data(
         dd_synth,

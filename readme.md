@@ -220,3 +220,7 @@ We want to give the user the ability to avoid synthesizing certain columns (for 
 In general, this work will go in `synthesize_me/generate_dd_obs`.
 
 Think about what other summary statistics we should add to the `dd_obs`.
+
+### Improve the `compare` sub-module
+
+We should add a check to make sure that each column was actually synthesized. For example, in the past, we had tried to synthesize some integers and the synthesization process didn't actually work.

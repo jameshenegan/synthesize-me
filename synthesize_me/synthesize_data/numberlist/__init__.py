@@ -1,4 +1,4 @@
-import pandas as pd
+from .default import synthesize_default_numberlist
 
 def synthesize_numberlist_column(series, method='default'):
     if method == 'default':
@@ -9,9 +9,6 @@ def synthesize_numberlist_column(series, method='default'):
     else:
         raise ValueError(f"Unknown synthesis method: {method}")
 
-def synthesize_default_numberlist(series):
-    # Implement default synthesis method for numberlists
-    pass
 
 def synthesize_alternative1_numberlist(series):
     # Implement alternative synthesis method here
