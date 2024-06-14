@@ -43,9 +43,9 @@ def synthesize_default_decimal(
     # Ensure all values are positive for Box-Cox transformation
     shift = 0 
     series_winsorized_min = series_winsorized.min()
-    min_value_is_negative = (series_winsorized_min < 0)
+    min_value_is_not_positive = (series_winsorized_min <= 0)
 
-    if min_value_is_negative:
+    if min_value_is_not_positive:
         shift = abs(series_winsorized_min) + 1e-6
     
     series_shifted = series_winsorized + shift
@@ -65,7 +65,7 @@ def synthesize_default_decimal(
     # Transform array back to series and reverse the shift
     series_modified = pd.Series(array_modified, index=series.index)
     
-    if min_value_is_negative:
+    if min_value_is_not_positive:
         series_modified -= shift
 
     return series_modified
