@@ -21,7 +21,10 @@ Given:
 
 ## Fine-Tuning with `dd_synth`
 
-The `dd_synth` DataFrame allows users to fine-tune aspects of the synthetic data generation process. It serves as both a data dictionary for the tables and variables in the input folder and a set of synthesis instructions for creating the tables and variables in the output folder.
+The `dd_synth` DataFrame allows users to fine-tune aspects of the synthetic data generation process. It serves as both
+
+- a data dictionary for the tables and variables in the input folder and
+- a set of synthesis instructions for creating the tables and variables in the output folder.
 
 ### Structure of `dd_synth`
 
@@ -152,6 +155,8 @@ This should create the following CSV file: `./example-data/metadata/dd_synth.csv
 
 Finally, we use the `synthesize_me` package to generate synthetic data based on the sample data and the metadata we created. The `synthesize_folder_of_csv_files` function reads the input data and metadata, and produces synthetic versions of the CSV files.
 
+#### General Usage
+
 Use the following code to synthesize the data:
 
 ```python
@@ -164,6 +169,8 @@ dd_obs, dd_synth = synthesize_folder_of_csv_files(input_path, output_path)
 ```
 
 The synthetic data should be saved in the `example-data/output` directory. This synthetic data can be used for further testing and development, ensuring that the `synthesize_me` package works correctly with various types of data.
+
+#### Example Script
 
 There is a sample script that can be executed here:
 
