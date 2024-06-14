@@ -1,6 +1,6 @@
 import pandas as pd
 import os
-from .decimal_synthesis import synthesize_decimal_column
+from .decimal import synthesize_decimal_column
 from .integer_synthesis import synthesize_integer_column
 from .numberlist_synthesis import synthesize_numberlist_column
 
