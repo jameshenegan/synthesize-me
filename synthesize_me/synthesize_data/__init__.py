@@ -1,5 +1,8 @@
 import pandas as pd
 import os
+from .decimal_synthesis import synthesize_decimal_column
+from .integer_synthesis import synthesize_integer_column
+from .numberlist_synthesis import synthesize_numberlist_column
 
 def create_csv_files_of_synth_data(
         dd_synth,
@@ -29,18 +32,19 @@ def synthesize_table_data(df, dd_synth_table):
                 df[var_name],
                 row['dispersion_amount'],
                 row['winsorize_lower_limit'],
-                row['winsorize_upper_limit']
+                row['winsorize_upper_limit'],
+                method=row.get('synthesis_method', 'default')
+            )
+        elif row['datatype'] == 'Integer':
+            synth_df[var_name] = synthesize_integer_column(
+                df[var_name],
+                method=row.get('synthesis_method', 'default')
+            )
+        elif row['datatype'] == 'NumberList':
+            synth_df[var_name] = synthesize_numberlist_column(
+                df[var_name],
+                method=row.get('synthesis_method', 'default')
             )
         # Add other data types synthesis as needed
 
     return synth_df
-
-def synthesize_decimal_column(series, dispersion_amount, winsorize_lower_limit, winsorize_upper_limit):
-    # Example synthesis logic for Decimal data type
-    lower_bound = series.quantile(winsorize_lower_limit)
-    upper_bound = series.quantile(winsorize_upper_limit)
-    series = series.clip(lower=lower_bound, upper=upper_bound)
-    noise = pd.Series([dispersion_amount] * len(series))
-    return series + noise
-
-# Add other synthesis functions as needed

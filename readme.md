@@ -144,3 +144,10 @@ dd_obs, dd_synth = synthesize_folder_of_csv_files(input_path, output_path)
 ```
 
 The synthetic data should be saved in the `example-data/output` directory. This synthetic data can be used for further testing and development, ensuring that the `synthesize_me` package works correctly with various types of data.
+
+## Next Steps
+
+- Create code and helper functions to compare the synthetic data against the original data
+- Generate synthetic data for NumberLists. Think about how to store the metadata for this. This should go in `synthesize_me/synthesize_data/__init__.py`
+- Add something like a "method" to the DDsynth so that the user can control the method that is used to generate the synthetic data. Different methods will be available for different data types. For example, one method for NumberLists is to treat the number list like an ordered numberlist. Another is to treat it as unordered.
+- Add example data that is of Integer DataType
