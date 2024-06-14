@@ -98,6 +98,12 @@ Run the following command to generate sample data:
 python generate_sample_data.py example-data/input --n 500 --seed 123
 ```
 
+or
+
+```bash
+python3 generate_sample_data.py example-data/input --n 500 --seed 123
+```
+
 This should create some CSV files in the `./example-data/input` directory. The generated files will contain synthetic data based on different statistical distributions, which can be used for developing and testing the `synthesize_me` package.
 
 #### Generate Sample Metadata
@@ -114,6 +120,12 @@ Run the following command to generate the `dd_obs.csv` file:
 python generate_dd_obs.py example-data/input example-data/metadata/dd_obs.csv
 ```
 
+or
+
+```bash
+python3 generate_dd_obs.py example-data/input example-data/metadata/dd_obs.csv
+```
+
 This should create the following CSV file: `./example-data/metadata/dd_obs.csv`. This file contains information about the distributions of the variables in the sample data, which is essential for generating synthesis instructions.
 
 ##### A Sample `dd_synth.csv` file
@@ -124,6 +136,12 @@ Run the following command to generate the `dd_synth.csv` file:
 
 ```bash
 python generate_dd_synth.py example-data/metadata/dd_obs.csv example-data/metadata/dd_synth.csv
+```
+
+or
+
+```bash
+python3 generate_dd_synth.py example-data/metadata/dd_obs.csv example-data/metadata/dd_synth.csv
 ```
 
 This should create the following CSV file: `./example-data/metadata/dd_synth.csv`. This file contains instructions on how to generate new synthetic data based on the distributions and parameters specified in the metadata.
@@ -144,6 +162,18 @@ dd_obs, dd_synth = synthesize_folder_of_csv_files(input_path, output_path)
 ```
 
 The synthetic data should be saved in the `example-data/output` directory. This synthetic data can be used for further testing and development, ensuring that the `synthesize_me` package works correctly with various types of data.
+
+There is a sample script that can be executed here:
+
+```bash
+python generate_synthetic_data.py
+```
+
+or
+
+```bash
+python3 generate_synthetic_data.py
+```
 
 ## Next Steps
 

@@ -60,10 +60,7 @@ def generate_sample1(n):
     # New columns
     normal_like_int = generate_normal_like_int(n)
     left_heavy_int = generate_left_heavy_int(n)
-    right_heavy_int = generate_right_heavy_int(n)
-    multi_modal_int = generate_multi_modal_int(n)
-    uniform_int = generate_uniform_int(n)
-
+    
     return pd.DataFrame({
         'Standard_Normal': col1,
         'Normal_Mean5_SD2': col2,
@@ -71,9 +68,7 @@ def generate_sample1(n):
         'Gamma_Shape2_Scale2': col4,
         'Normal_Like_Int': normal_like_int,
         'Left_Heavy_Int': left_heavy_int,
-        'Right_Heavy_Int': right_heavy_int,
-        'Multi_Modal_Int': multi_modal_int,
-        'Uniform_Int': uniform_int
+
     })
 
 def generate_sample2(n):
@@ -102,24 +97,18 @@ def generate_sample2(n):
     # Eleventh column: Log-normal distribution with mean 0 and sigma 1
     col11 = np.random.lognormal(0, 1, n)
 
-    # New columns
-    normal_like_int = generate_normal_like_int(n)
-    left_heavy_int = generate_left_heavy_int(n)
+    # New columns    
     right_heavy_int = generate_right_heavy_int(n)
-    multi_modal_int = generate_multi_modal_int(n)
-    uniform_int = generate_uniform_int(n)
+    multi_modal_int = generate_multi_modal_int(n)    
 
     return pd.DataFrame({
         'Multi_Modal': col5,
         'With_Missing_Data': col6,
         'Uniform_0_10': col7,
         'Beta_Alpha2_Beta5': col10,
-        'Log_Normal_Mean0_Sigma1': col11,
-        'Normal_Like_Int': normal_like_int,
-        'Left_Heavy_Int': left_heavy_int,
+        'Log_Normal_Mean0_Sigma1': col11,      
         'Right_Heavy_Int': right_heavy_int,
         'Multi_Modal_Int': multi_modal_int,
-        'Uniform_Int': uniform_int
     })
 
 def generate_sample3(n):
@@ -138,20 +127,12 @@ def generate_sample3(n):
     # Poisson distribution with lambda = 3
     col13 = np.random.poisson(3, n)
 
-    # New columns
-    normal_like_int = generate_normal_like_int(n)
-    left_heavy_int = generate_left_heavy_int(n)
-    right_heavy_int = generate_right_heavy_int(n)
-    multi_modal_int = generate_multi_modal_int(n)
+    # New columns    
     uniform_int = generate_uniform_int(n)
 
     return pd.DataFrame({
         'Binomial_n10_p_one_half': col12,
         'Poisson_Lambda3': col13,
-        'Normal_Like_Int': normal_like_int,
-        'Left_Heavy_Int': left_heavy_int,
-        'Right_Heavy_Int': right_heavy_int,
-        'Multi_Modal_Int': multi_modal_int,
         'Uniform_Int': uniform_int
     })
 
