@@ -20,7 +20,7 @@ def generate_comparison_plots(original_df, synth_df, dd_synth_table, output_fold
         datatype = row['datatype']
         
         # Generate comparison plots for Decimal variables
-        if datatype == 'Decimal':
+        if datatype in ['Decimal', 'Integer']:
             plt.figure(figsize=(10, 6))
             plt.scatter(original_df[var_name], synth_df[var_name], alpha=0.5)
             plt.title(f'Comparison of Original and Synthesized Data for {var_name}')

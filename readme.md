@@ -216,6 +216,8 @@ Include alternative methods for synthesizing a variable that is of Decimal data 
 
 Think about how to store the metadata for this.
 
+Ensure that synthesized data is in the range of the original data.
+
 ##### Documentation
 
 Add documentation.
