@@ -21,9 +21,11 @@ Given:
 
 ## Fine-Tuning with `dd_synth`
 
-The `dd_synth` DataFrame allows users to fine-tune aspects of the synthetic data generation process. It serves as both a data dictionary and a set of synthesis instructions.
+The `dd_synth` DataFrame allows users to fine-tune aspects of the synthetic data generation process. It serves as both a data dictionary for the tables and variables in the input folder and a set of synthesis instructions for creating the tables and variables in the output folder.
 
 ### Structure of `dd_synth`
+
+Here's an example of what a `dd_synth` might look like.
 
 | table_name   | var_name | datatype   | dispersion_amount | winsorize_lower_limit | winsorize_upper_limit |
 | ------------ | -------- | ---------- | ----------------- | --------------------- | --------------------- |
