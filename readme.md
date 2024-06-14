@@ -177,13 +177,9 @@ python3 generate_synthetic_data.py
 
 ## Next Steps
 
-### Compare Synthetic Data with Original Data
-
-Create code and helper functions to compare the synthetic data against the original data
-
 ### Improve the `synthesize_data` sub-module
 
-This should go in `synthesize_me/synthesize_data/__init__.py`
+In general, this work will go in `synthesize_me/synthesize_data`.
 
 #### NumberList
 
@@ -205,8 +201,16 @@ Think about how to store the metadata for this.
 
 ### Update the `dd_synth`
 
+In general, this work will go in `synthesize_me/create_dd_synth`.
+
 Add something like a "method" to the DDsynth so that the user can control the method that is used to generate the synthetic data.
 
 Different methods will be available for different data types.
 
 For example, one method for NumberLists is to treat the number list like an ordered numberlist. Another is to treat it as unordered.
+
+### Update the `dd_obs`
+
+In general, this work will go in `synthesize_me/generate_dd_obs`.
+
+Think about what other summary statistics we should add to the `dd_obs`.
