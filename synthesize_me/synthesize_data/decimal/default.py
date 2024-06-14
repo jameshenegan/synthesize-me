@@ -59,6 +59,12 @@ def synthesize_default_decimal(
     # Create modified box_cox
     noisy_box_cox = box_cox + noise
 
+    # Ensure all values in noisy_box_cox are positive by adjusting only non-positive values
+    noisy_box_cox_min = noisy_box_cox.min()
+    if noisy_box_cox_min <= 0:
+        adjustment = abs(noisy_box_cox_min) + 1e-6
+        noisy_box_cox[noisy_box_cox <= 0] += adjustment
+
     # Invert noisy_box_cox
     array_modified = inv_boxcox(noisy_box_cox, lmbda)
 
