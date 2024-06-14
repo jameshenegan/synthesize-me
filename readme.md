@@ -177,7 +177,36 @@ python3 generate_synthetic_data.py
 
 ## Next Steps
 
-- Create code and helper functions to compare the synthetic data against the original data
-- Generate synthetic data for NumberLists. Think about how to store the metadata for this. This should go in `synthesize_me/synthesize_data/__init__.py`
-- Add something like a "method" to the DDsynth so that the user can control the method that is used to generate the synthetic data. Different methods will be available for different data types. For example, one method for NumberLists is to treat the number list like an ordered numberlist. Another is to treat it as unordered.
-- Add example data that is of Integer DataType
+### Compare Synthetic Data with Original Data
+
+Create code and helper functions to compare the synthetic data against the original data
+
+### Improve the `synthesize_data` sub-module
+
+This should go in `synthesize_me/synthesize_data/__init__.py`
+
+#### NumberList
+
+Come up with at least one method to generate synthetic data for a variable that is of NumberList data type.
+
+Think about how to store the metadata for this.
+
+#### Integer
+
+Come up with at least one method to generate synthetic data for a variable that is of Integer data type.
+
+Think about how to store the metadata for this.
+
+#### Decimal
+
+Include alternative methods for synthesizing a variable that is of Decimal data type.1
+
+Think about how to store the metadata for this.
+
+### Update the `dd_synth`
+
+Add something like a "method" to the DDsynth so that the user can control the method that is used to generate the synthetic data.
+
+Different methods will be available for different data types.
+
+For example, one method for NumberLists is to treat the number list like an ordered numberlist. Another is to treat it as unordered.
