@@ -11,14 +11,6 @@ Given:
 
 `synthesize_me` will generate synthetic versions of the CSV files in the input folder and write them to disk in the output folder. Optionally, users can fine-tune aspects of the synthetic data generation process to suit their specific needs.
 
-## Installation
-
-(TODO: Add installation instructions once the package is finished)
-
-## Usage
-
-(TODO: Add usage instructions once the package is finished)
-
 ## Fine-Tuning with `dd_synth`
 
 The `dd_synth` DataFrame allows users to fine-tune aspects of the synthetic data generation process. It serves as both

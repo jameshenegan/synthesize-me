@@ -14,6 +14,18 @@ The `create_dd_synth` module generates the `dd_synth` DataFrame, which includes 
 
 For more details, see the [create_dd_synth README](../synthesize_me/create_dd_synth/readme.md).
 
+## `synthesize_data`
+
+The `synthesize_data` module is responsible for applying synthesis instructions to generate synthetic CSV files. This module processes the synthesis instructions from `dd_synth` and applies them to the input CSV files to create synthetic versions.
+
+For more details, see the [synthesize_data README](../synthesize_me/synthesize_data/readme.md).
+
+## `compare`
+
+The `compare` module is responsible for comparing synthesized data with original data.
+
+For more details, see the [compare README](../synthesize_me/compare/readme.md).
+
 ## Other Modules
 
 - `synthesize_me/__init__.py`: Initializes the package.
