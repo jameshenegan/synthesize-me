@@ -182,6 +182,8 @@ python3 generate_synthetic_data.py
 
 In general, this work will go in `synthesize_me/synthesize_data`.
 
+For more details, see the [Next Steps for the synthesize_data module](./synthesize_me/synthesize_data/next_steps.md).
+
 ### Update the `dd_synth`
 
 In general, this work will go in `synthesize_me/create_dd_synth`.
