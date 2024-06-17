@@ -1,8 +1,8 @@
 from .default import synthesize_default_numberlist
 
-def synthesize_numberlist_column(series, method='default'):
+def synthesize_numberlist_column(series, p_modify_number_list_val, method='default'):
     if method == 'default':
-        return synthesize_default_numberlist(series)
+        return synthesize_default_numberlist(series, p_modify_number_list_val)
     elif method == 'alternative1':
         return synthesize_alternative1_numberlist(series)
     # Add more methods as needed

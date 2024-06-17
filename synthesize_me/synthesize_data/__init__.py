@@ -46,6 +46,7 @@ def synthesize_table_data(df, dd_synth_table):
         elif row['datatype'] == 'NumberList':
             synth_df[var_name] = synthesize_numberlist_column(
                 df[var_name],
+                row['p_modify_number_list_val'],
                 method=row.get('synthesis_method', 'default')
             )
         # Add other data types synthesis as needed
