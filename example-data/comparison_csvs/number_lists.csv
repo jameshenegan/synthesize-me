@@ -1,0 +1,3 @@
+table_name,var_name,datatype,num_original_vals,num_synth_vals,num_matches,prop_matches
+sample3,Binomial_n10_p_one_half,NumberList,500,500,447,0.894
+sample3,Poisson_Lambda3,NumberList,500,500,445,0.89
