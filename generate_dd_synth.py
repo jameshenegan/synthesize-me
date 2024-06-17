@@ -22,7 +22,8 @@ def main(input_file, output_file, dispersion_factor, winsorize_lower_limit, wins
     blanket_default_params = {
         "dispersion_factor": dispersion_factor,
         "winsorize_lower_limit": winsorize_lower_limit,
-        "winsorize_upper_limit": winsorize_upper_limit
+        "winsorize_upper_limit": winsorize_upper_limit,
+        "p_modify_number_list_val" : 0.15
     }
 
     # Generate dd_synth DataFrame

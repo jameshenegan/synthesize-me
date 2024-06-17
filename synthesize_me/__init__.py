@@ -10,7 +10,8 @@ def synthesize_folder_of_csv_files(
         blanket_default_params={
             "dispersion_factor": 0.05,
             "winsorize_lower_limit": 0.05,
-            "winsorize_upper_limit": 0.95
+            "winsorize_upper_limit": 0.95,
+            "p_modify_number_list_val" : 0.1
         }
 ):
     # If a dd_obs has not been provided, generate dd_obs

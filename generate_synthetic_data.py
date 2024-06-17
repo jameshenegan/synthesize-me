@@ -25,7 +25,8 @@ def main():
         blanket_default_params={
             "dispersion_factor": 0.05,
             "winsorize_lower_limit": 0.05,
-            "winsorize_upper_limit": 0.95
+            "winsorize_upper_limit": 0.95,
+            "p_modify_number_list_val" : 0.15
         }
     )
 
