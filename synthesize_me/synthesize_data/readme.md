@@ -29,3 +29,37 @@ dd_synth = pd.read_csv('path/to/dd_synth.csv')
 # Generate synthetic data
 create_csv_files_of_synth_data(dd_synth, input_folder, output_folder)
 ```
+
+## Next Steps
+
+### NumberList
+
+Come up with another method for synthesizing a columns of NumberList data type. Instead of changing to a random value, change to a neighboring value.
+
+Think about how to store the metadata for this.
+
+#### Documentation
+
+Add documentation.
+
+### Integer
+
+Come up with at least one method to generate synthetic data for a variable that is of Integer data type.
+
+Think about how to store the metadata for this.
+
+#### Documentation
+
+Add documentation.
+
+### Decimal
+
+Include alternative methods for synthesizing a variable that is of Decimal data type.
+
+Think about how to store the metadata for this.
+
+Ensure that synthesized data is in the range of the original data.
+
+#### Documentation
+
+Add documentation.

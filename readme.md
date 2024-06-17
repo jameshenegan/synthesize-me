@@ -190,70 +190,14 @@ python3 generate_synthetic_data.py
 
 In general, this work will go in `synthesize_me/synthesize_data`.
 
-#### NumberList
-
-Come up with another method for synthesizing a columns of NumberList data type. Instead of changing to a random value, change to a neighboring value.
-
-Think about how to store the metadata for this.
-
-##### Documentation
-
-Add documentation.
-
-#### Integer
-
-Come up with at least one method to generate synthetic data for a variable that is of Integer data type.
-
-Think about how to store the metadata for this.
-
-##### Documentation
-
-Add documentation.
-
-#### Decimal
-
-Include alternative methods for synthesizing a variable that is of Decimal data type.
-
-Think about how to store the metadata for this.
-
-Ensure that synthesized data is in the range of the original data.
-
-##### Documentation
-
-Add documentation.
-
 ### Update the `dd_synth`
 
 In general, this work will go in `synthesize_me/create_dd_synth`.
-
-#### Add a `method` parameter
-
-Add something like a "method" to the DDsynth so that the user can control the method that is used to generate the synthetic data.
-
-Different methods will be available for different data types.
-
-For example, one method for NumberLists is to treat the number list like an ordered numberlist. Another is to treat it as unordered.
-
-#### Add a parameter for NumberList synthesization.
-
-Right now, there isn't a parameter that's being passed in to the synthesize_number_list function.
-
-#### Add a `should_be_synthesized` parameter
-
-We want to give the user the ability to avoid synthesizing certain columns (for example id columns). By default, all of the columns will be synthesized. So, by default, the `should_be_synthesized` value will be 1. However, the user can set the `should_be_synthesized` value to 0 for variables that they don't want to synthesize.
 
 ### Update the `dd_obs`
 
 In general, this work will go in `synthesize_me/generate_dd_obs`.
 
-Think about what other summary statistics we should add to the `dd_obs`.
-
 ### Improve the `compare` sub-module
 
-#### Did things actually change?
-
-We should add a check to make sure that each column was actually synthesized. For example, in the past, we had tried to synthesize some integers and the synthesization process didn't actually work.
-
-#### Comparing NumberLists
-
-What is a good way to compare original vs synthetic numberlists?
+In general, this work will go in `synthesize_me/compare`
