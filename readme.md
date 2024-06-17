@@ -194,6 +194,10 @@ For more details, see the [Next Steps for the create_dd_synth module](./synthesi
 
 In general, this work will go in `synthesize_me/generate_dd_obs`.
 
+For more details, see the [Next Steps for the generate_dd_obs module](./synthesize_me/generate_dd_obs/next_steps.md).
+
 ### Improve the `compare` sub-module
 
 In general, this work will go in `synthesize_me/compare`
+
+For more details, see the [Next Steps for the compare module](./synthesize_me/compare/next_steps.md).

@@ -88,9 +88,3 @@ print(dd_obs_df)
 - `os`
 
 Ensure you have these packages installed in your environment.
-
-## Next Steps
-
-### Additional summary statistics
-
-Think about what other summary statistics we should add to the `dd_obs`.
