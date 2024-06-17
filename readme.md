@@ -188,6 +188,8 @@ For more details, see the [Next Steps for the synthesize_data module](./synthesi
 
 In general, this work will go in `synthesize_me/create_dd_synth`.
 
+For more details, see the [Next Steps for the create_dd_synth module](./synthesize_me/create_dd_synth/next_steps.md).
+
 ### Update the `dd_obs`
 
 In general, this work will go in `synthesize_me/generate_dd_obs`.
