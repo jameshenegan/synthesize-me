@@ -33,6 +33,11 @@ def main(input_file, output_file, dispersion_factor, winsorize_lower_limit, wins
     logging.info("Generating dd_synth with default parameters.")
     dd_synth = create_dd_synth(dd_obs, blanket_default_params)
 
+    for i, row in dd_synth.iterrows():
+        if row['var_name'] == 'id_number':
+            dd_synth.at[i, 'should_be_synthesized'] = 0
+
+
     # Save dd_synth to CSV
     logging.info(f"Saving dd_synth to output file: {output_file}")
     dd_synth.to_csv(output_file, index=False)

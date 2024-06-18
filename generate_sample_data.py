@@ -60,8 +60,8 @@ def generate_sample1(n):
     # New columns
     normal_like_int = generate_normal_like_int(n)
     left_heavy_int = generate_left_heavy_int(n)
-    
-    return pd.DataFrame({
+
+    df_sample1 = pd.DataFrame({
         'Standard_Normal': col1,
         'Normal_Mean5_SD2': col2,
         'Exponential_Lambda1': col3,
@@ -70,6 +70,11 @@ def generate_sample1(n):
         'Left_Heavy_Int': left_heavy_int,
 
     })
+
+    df_sample1 = df_sample1.reset_index()    
+    df_sample1 = df_sample1.rename(columns={"index" : "id_number"})
+    
+    return df_sample1
 
 def generate_sample2(n):
     """
@@ -101,7 +106,7 @@ def generate_sample2(n):
     right_heavy_int = generate_right_heavy_int(n)
     multi_modal_int = generate_multi_modal_int(n)    
 
-    return pd.DataFrame({
+    df_sample2 = pd.DataFrame({
         'Multi_Modal': col5,
         'With_Missing_Data': col6,
         'Uniform_0_10': col7,
@@ -110,6 +115,11 @@ def generate_sample2(n):
         'Right_Heavy_Int': right_heavy_int,
         'Multi_Modal_Int': multi_modal_int,
     })
+
+    df_sample2 = df_sample2.reset_index()    
+    df_sample2 = df_sample2.rename(columns={"index" : "id_number"})
+
+    return df_sample2
 
 def generate_sample3(n):
     """
@@ -130,11 +140,17 @@ def generate_sample3(n):
     # New columns    
     uniform_int = generate_uniform_int(n)
 
-    return pd.DataFrame({
+    df_sample3 = pd.DataFrame({
         'Binomial_n10_p_one_half': col12,
         'Poisson_Lambda3': col13,
         'Uniform_Int': uniform_int
     })
+
+
+    df_sample3 = df_sample3.reset_index()    
+    df_sample3 = df_sample3.rename(columns={"index" : "id_number"})
+
+    return df_sample3
 
 def save_csv(df, output_dir, filename):
     """
