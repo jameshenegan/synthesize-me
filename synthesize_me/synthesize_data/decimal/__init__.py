@@ -1,9 +1,9 @@
 import pandas as pd
-from .default import synthesize_default_decimal
+from .add_normal_noise import add_normal_noise
 
 def synthesize_decimal_column(series, dispersion_amount, winsorize_lower_limit, winsorize_upper_limit, method='default'):
     if method == 'default':
-        return synthesize_default_decimal(series, dispersion_amount, winsorize_lower_limit, winsorize_upper_limit)
+        return add_normal_noise(series, dispersion_amount)
     elif method == 'alternative1':
         return synthesize_alternative1_decimal(series, dispersion_amount, winsorize_lower_limit, winsorize_upper_limit)
     # Add more methods as needed

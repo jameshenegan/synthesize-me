@@ -201,13 +201,3 @@ For more details, see the [Next Steps for the generate_dd_obs module](./synthesi
 In general, this work will go in `synthesize_me/compare`
 
 For more details, see the [Next Steps for the compare module](./synthesize_me/compare/next_steps.md).
-
-dd_obs_entry
-
-     'obs_mean': obs_mean,
-        'obs_std': obs_std,
-        'obs_min': obs_min,
-        'obs_p_25': obs_p_25,
-        'obs_median': obs_median,
-        'obs_p_75': obs_p_75,
-        'obs_max': obs_max

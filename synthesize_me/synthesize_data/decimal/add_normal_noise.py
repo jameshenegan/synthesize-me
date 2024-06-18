@@ -1,14 +1,9 @@
 import pandas as pd
 import numpy as np
-from scipy.stats.mstats import winsorize
-from scipy.stats import boxcox
-from scipy.special import inv_boxcox
 
-def synthesize_default_decimal(
+def add_normal_noise(
     series: pd.Series, 
     dispersion_amount: float, 
-    winsorize_lower_limit: float, 
-    winsorize_upper_limit: float, 
     random_seed: int = 42
 ) -> pd.Series:
 
