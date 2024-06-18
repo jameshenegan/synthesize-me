@@ -44,6 +44,8 @@ Here's an example of what a `dd_synth` might look like:
 | sample3    | Poisson_Lambda3         | 1                     | NumberList | random_shuffle             |                   |                       |                       | 0.15                     |
 | sample3    | Uniform_Int             | 1                     | Integer    | add_normal_noise_and_round | 2.600             | 0.05                  | 0.95                  |                          |
 
+Here are explanations of what each column of the `dd_synth` represents:
+
 - **table_name**: The name of the table containing the variable. This corresponds to the CSV file name without the `.csv` extension.
 - **var_name**: The name of the variable.
 - **should_be_synthesized**: A flag indicating whether the variable should be synthesized (1) or not (0).
@@ -68,8 +70,6 @@ Creating a `dd_synth` manually can be time-consuming. To simplify this process, 
 
 ### Step One: Construct the `dd_obs`
 
-### Step One: Construct the `dd_obs`
-
 First, the package generates a DataFrame called `dd_obs`. This DataFrame contains the following columns:
 
 - **table_name**: The name of the table containing the variable (corresponding to the CSV file name without the `.csv` extension).
@@ -88,7 +88,6 @@ Additionally, `dd_obs` includes various summary statistics for each variable, wh
 - **obs_median**: The median value.
 - **obs_p_75**: The 75th percentile.
 - **obs_max**: The maximum observed value.
-- **obs_permissible_values**: The permissible values for categorical or discrete variables (only applicable for certain data types like `NumberList`).
 
 These summary statistics help determine the parameters that will be used in the `dd_synth`.
 
@@ -123,10 +122,32 @@ Here's an example of what a `dd_obs` might look like:
 Next, the package uses `blanket_default_params` to automatically create the `dd_synth` by making sensible default decisions based on the `dd_obs`. Here are some example `blanket_default_params`:
 
 - **dispersion_factor**: For example, 0.05. This value is multiplied by the `obs_iqr` of a decimal variable to determine the `dispersion_amount` for that variable in the `dd_synth`.
-- **winsorize_lower_limit**: For example, 0.05. This value is set as the `winsorize_lower_limit` for all decimal variables.
-- **winsorize_upper_limit**: For example, 0.95. This value is set as the `winsorize_upper_limit` for all decimal variables.
+- **winsorize_lower_limit**: For example, 0.05. This value is set as the `winsorize_lower_limit` for all applicable variables.
+- **winsorize_upper_limit**: For example, 0.95. This value is set as the `winsorize_upper_limit` for all applicable variables.
+- **p_modify_number_list_val**: For example, 0.15. This value sets the probability of modifying a value in a `NumberList` column.
+- **default_decimal_method**: The default method used for synthesizing decimal variables. Examples include `add_normal_noise`.
+- **default_integer_method**: The default method used for synthesizing integer variables. Examples include `add_normal_noise_and_round`.
+- **default_numberlist_method**: The default method used for synthesizing `NumberList` variables. Examples include `random_shuffle`.
 
 The main idea is that the package uses the information derived from the `dd_obs` and combines it with the `blanket_default_params` to automatically create a `dd_synth`, making the process of generating synthetic data more efficient and user-friendly.
+
+#### Example of `blanket_default_params`
+
+Here is a current example of `blanket_default_params`:
+
+```python
+blanket_default_params =  {
+    "dispersion_factor": 0.05,
+    "winsorize_lower_limit": 0.05,
+    "winsorize_upper_limit": 0.95,
+    "p_modify_number_list_val": 0.15,
+    "default_decimal_method": "add_normal_noise",
+    "default_integer_method": "add_normal_noise_and_round",
+    "default_numberlist_method": "random_shuffle",
+}
+```
+
+These parameters are used to automatically generate the `dd_synth` DataFrame, guiding the synthesis process based on the observed data statistics and the specified defaults. This automation helps streamline the creation of synthetic data, ensuring consistency and reducing the need for manual adjustments.
 
 ## Example Usage
 
