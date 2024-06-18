@@ -14,6 +14,7 @@ def handle_numberlist(row, blanket_default_params):
     """
     
     p_modify_number_list_val = blanket_default_params['p_modify_number_list_val']
+    method = blanket_default_params['default_numberlist_method']
     return {
         'table_name': row['table_name'],
         'var_name': row['var_name'],

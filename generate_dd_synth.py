@@ -19,11 +19,14 @@ def main(input_file, output_file, dispersion_factor, winsorize_lower_limit, wins
     dd_obs = pd.read_csv(input_file)
 
     # Set blanket default parameters
-    blanket_default_params = {
-        "dispersion_factor": dispersion_factor,
-        "winsorize_lower_limit": winsorize_lower_limit,
-        "winsorize_upper_limit": winsorize_upper_limit,
-        "p_modify_number_list_val" : 0.15
+    blanket_default_params =  {
+        "dispersion_factor": 0.05,
+        "winsorize_lower_limit": 0.05,
+        "winsorize_upper_limit": 0.95,
+        "p_modify_number_list_val" : 0.15,
+        "default_decimal_method" : "add_normal_noise",
+        "default_integer_method" : "add_normal_noise_and_round",
+        "default_numberlist_method" : "random_shuffle",
     }
 
     # Generate dd_synth DataFrame

@@ -16,11 +16,13 @@ def handle_decimal(row, blanket_default_params):
     dispersion_amount = blanket_default_params['dispersion_factor'] * iqr
     winsorize_lower_limit = blanket_default_params['winsorize_lower_limit']
     winsorize_upper_limit = blanket_default_params['winsorize_upper_limit']
+    method = blanket_default_params['default_decimal_method']
 
     return {
         'table_name': row['table_name'],
         'var_name': row['var_name'],
         'datatype': 'Decimal',
+        'method' : method,
         'dispersion_amount': dispersion_amount,
         'winsorize_lower_limit': winsorize_lower_limit,
         'winsorize_upper_limit': winsorize_upper_limit

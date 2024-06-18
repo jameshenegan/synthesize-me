@@ -3,7 +3,15 @@ from .decimal import handle_decimal
 from .numberlist import handle_numberlist
 from .integer import handle_integer
 
-def create_dd_synth(dd_obs, blanket_default_params):    
+def create_dd_synth(dd_obs, blanket_default_params = {
+        "dispersion_factor": 0.05,
+        "winsorize_lower_limit": 0.05,
+        "winsorize_upper_limit": 0.95,
+        "p_modify_number_list_val" : 0.15,
+        "default_decimal_method" : "add_normal_noise",
+        "default_integer_method" : "add_normal_noise_and_round",
+        "default_numberlist_method" : "random_shuffle",
+    }):    
     """
     Create the dd_synth DataFrame based on the dd_obs DataFrame and blanket default parameters.
 
