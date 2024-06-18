@@ -20,15 +20,7 @@ def make_dd_obs_data_for_table(input_dir, file_name):
         series = df[var_name]
         metadata = {"table_name" : table_name, "var_name" : var_name}
         dd_obs_entry = make_dd_obs_entry_for_series(series, metadata)
-        dd_obs_data.append(dd_obs_entry)
-        
+        dd_obs_data.append(dd_obs_entry)        
         
     return dd_obs_data
 
-
-def compute_obs_missing(series):
-    num_missing = series[series.isna()].shape[0]
-    prop_missing = num_missing / series.shape[0]
-    pct_missing = f'{round(100 * prop_missing, 2)}%'
-    obs_missing = f'{num_missing} ({pct_missing})'
-    return obs_missing
