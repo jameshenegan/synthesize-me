@@ -68,23 +68,55 @@ Creating a `dd_synth` manually can be time-consuming. To simplify this process, 
 
 ### Step One: Construct the `dd_obs`
 
+### Step One: Construct the `dd_obs`
+
 First, the package generates a DataFrame called `dd_obs`. This DataFrame contains the following columns:
 
 - **table_name**: The name of the table containing the variable (corresponding to the CSV file name without the `.csv` extension).
 - **var_name**: The name of the variable.
-- **obs_datatype**: The inferred data type of the variable (e.g., String, Decimal, Integer, Numberlist, etc.).
+- **obs_numobs**: The number of observations for the variable.
+- **obs_distinct**: The number of distinct values for the variable.
+- **obs_missing**: The number and percentage of missing values for the variable.
+- **obs_datatype**: The inferred data type of the variable (e.g., String, Decimal, Integer, NumberList, etc.).
 
 Additionally, `dd_obs` includes various summary statistics for each variable, which depend on the `obs_datatype`. For example, for decimal variables, the summary statistics include:
 
-- **obs_min**: The minimum observed value.
-- **obs_max**: The maximum observed value.
 - **obs_mean**: The mean value.
 - **obs_std**: The standard deviation of the values.
+- **obs_min**: The minimum observed value.
 - **obs_p_25**: The 25th percentile.
+- **obs_median**: The median value.
 - **obs_p_75**: The 75th percentile.
-- **obs_iqr**: The interquartile range (75th percentile minus the 25th percentile).
+- **obs_max**: The maximum observed value.
+- **obs_permissible_values**: The permissible values for categorical or discrete variables (only applicable for certain data types like `NumberList`).
 
 These summary statistics help determine the parameters that will be used in the `dd_synth`.
+
+#### Example of `dd_obs`
+
+Here's an example of what a `dd_obs` might look like:
+
+| table_name | var_name                | obs_numobs | obs_distinct | obs_missing | obs_datatype | obs_mean | obs_std | obs_min | obs_p_25 | obs_median | obs_p_75 | obs_max | obs_permissible_values         |
+| ---------- | ----------------------- | ---------- | ------------ | ----------- | ------------ | -------- | ------- | ------- | -------- | ---------- | -------- | ------- | ------------------------------ |
+| sample1    | id_number               | 500        | 500          | 0 (0.0%)    | Integer      | 249.5    | 144.48  | 0.0     | 124.75   | 249.5      | 374.25   | 499.0   |                                |
+| sample1    | Standard_Normal         | 500        | 500          | 0 (0.0%)    | Decimal      | -0.0386  | 1.0042  | -3.2311 | -0.6904  | -0.0365    | 0.6696   | 2.9586  |                                |
+| sample1    | Normal_Mean5_SD2        | 500        | 500          | 0 (0.0%)    | Decimal      | 4.9190   | 1.9987  | -1.3341 | 3.6389   | 4.9089     | 6.3105   | 12.1432 |                                |
+| sample1    | Exponential_Lambda1     | 500        | 500          | 0 (0.0%)    | Decimal      | 1.0286   | 1.0060  | 0.0001  | 0.2737   | 0.7554     | 1.5301   | 7.9413  |                                |
+| sample1    | Gamma_Shape2_Scale2     | 500        | 500          | 0 (0.0%)    | Decimal      | 4.1359   | 2.7129  | 0.0300  | 2.0137   | 3.6054     | 5.6619   | 13.9704 |                                |
+| sample1    | Normal_Like_Int         | 500        | 87           | 0 (0.0%)    | Integer      | 48.4940  | 18.0666 | 0.0     | 37.0     | 49.0       | 60.25    | 100.0   |                                |
+| sample1    | Left_Heavy_Int          | 500        | 57           | 0 (0.0%)    | Integer      | 13.4620  | 13.7512 | 0.0     | 3.0      | 10.0       | 19.0     | 100.0   |                                |
+| sample2    | id_number               | 500        | 500          | 0 (0.0%)    | Integer      | 249.5    | 144.48  | 0.0     | 124.75   | 249.5      | 374.25   | 499.0   |                                |
+| sample2    | Multi_Modal             | 500        | 500          | 0 (0.0%)    | Decimal      | 0.5203   | 2.5423  | -3.1131 | -1.9861  | 0.5444     | 3.0079   | 4.5254  |                                |
+| sample2    | With_Missing_Data       | 450        | 450          | 50 (10.0%)  | Decimal      | 0.0810   | 1.0233  | -2.6434 | -0.5752  | 0.0115     | 0.7830   | 2.7995  |                                |
+| sample2    | Uniform_0_10            | 500        | 500          | 0 (0.0%)    | Decimal      | 5.0535   | 2.9332  | 0.0594  | 2.5513   | 4.9989     | 7.5868   | 9.9685  |                                |
+| sample2    | Beta_Alpha2_Beta5       | 500        | 500          | 0 (0.0%)    | Decimal      | 0.2806   | 0.1565  | 0.0108  | 0.1562   | 0.2634     | 0.3934   | 0.8048  |                                |
+| sample2    | Log_Normal_Mean0_Sigma1 | 500        | 500          | 0 (0.0%)    | Decimal      | 1.5100   | 1.7465  | 0.0348  | 0.4902   | 0.9833     | 1.8173   | 12.8518 |                                |
+| sample2    | Right_Heavy_Int         | 500        | 59           | 0 (0.0%)    | Integer      | 85.7380  | 14.3213 | 0.0     | 80.75    | 90.0       | 95.25    | 100.0   |                                |
+| sample2    | Multi_Modal_Int         | 500        | 65           | 0 (0.0%)    | Integer      | 49.0080  | 32.8204 | 0.0     | 17.0     | 52.0       | 81.0     | 100.0   |                                |
+| sample3    | id_number               | 500        | 500          | 0 (0.0%)    | Integer      | 249.5    | 144.48  | 0.0     | 124.75   | 249.5      | 374.25   | 499.0   |                                |
+| sample3    | Binomial_n10_p_one_half | 500        | 10           | 0 (0.0%)    | NumberList   |          |         |         |          |            |          |         | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] |
+| sample3    | Poisson_Lambda3         | 500        | 9            | 0 (0.0%)    | NumberList   |          |         |         |          |            |          |         | [0, 1, 2, 3, 4, 5, 6, 7, 8]    |
+| sample3    | Uniform_Int             | 500        | 98           | 0 (0.0%)    | Integer      | 49.2740  | 29.6560 | 0.0     | 23.0     | 48.5       | 75.0     | 99.0    |                                |
 
 ### Step Two: Combine the `dd_obs` with the `blanket_default_params` to Obtain Parameters for the `dd_synth`
 
