@@ -11,9 +11,11 @@ def synthesize_folder_of_csv_files(
             "dispersion_factor": 0.05,
             "winsorize_lower_limit": 0.05,
             "winsorize_upper_limit": 0.95,
-            "p_modify_number_list_val" : 0.1
-        }
-):
+            "p_modify_number_list_val": 0.15,
+            "default_decimal_method": "add_normal_noise",
+            "default_integer_method": "add_normal_noise_and_round",
+            "default_numberlist_method": "random_shuffle",
+}):
     # If a dd_obs has not been provided, generate dd_obs
     if dd_obs is None:
         dd_obs = generate_dd_obs(path_to_input_folder_of_csv_files)
@@ -31,3 +33,4 @@ def synthesize_folder_of_csv_files(
 
     # Return the dd_obs and the dd_synth
     return dd_obs, dd_synth
+
