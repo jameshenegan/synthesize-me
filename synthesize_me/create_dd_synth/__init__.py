@@ -39,12 +39,10 @@ def create_dd_synth(dd_obs, blanket_default_params):
 
     # Create DataFrame 
     dd_synth_df = pd.DataFrame(dd_synth_data)
+
+    # Add a column called 'should_be_synthesized', set default value to 1 (True)
+    dd_synth_df['should_be_synthesized'] = 1
     return dd_synth_df
-
-
-
-
-
 
 
 def handle_default(row, blanket_default_params):
