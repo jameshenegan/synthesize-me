@@ -9,7 +9,10 @@ def generate_dd_obs(path_to_input_folder_of_csv_files):
     dd_obs_data = []
 
     # Process each file in the input directory
-    for file_name in os.listdir(path_to_input_folder_of_csv_files):
+    list_of_files_in_input_folder = os.listdir(path_to_input_folder_of_csv_files)
+    list_of_files_in_input_folder.sort()
+    
+    for file_name in list_of_files_in_input_folder:
         if file_name.endswith('.csv'):        
             # Create a dictionary containing the dd_obs_data for this table
             dd_obs_data += make_dd_obs_data_for_table(path_to_input_folder_of_csv_files, file_name)

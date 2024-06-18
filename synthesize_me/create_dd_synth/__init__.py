@@ -50,7 +50,10 @@ def create_dd_synth(dd_obs, blanket_default_params = {
 
     # Add a column called 'should_be_synthesized', set default value to 1 (True)
     dd_synth_df['should_be_synthesized'] = 1
-    return dd_synth_df
+
+    new_col_order = ['table_name', 'var_name', 'should_be_synthesized']
+    new_col_order += [c for c in dd_synth_df.columns if c not in new_col_order]
+    return dd_synth_df[new_col_order].copy()
 
 
 def handle_default(row, blanket_default_params):
