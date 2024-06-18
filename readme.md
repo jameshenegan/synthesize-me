@@ -20,30 +20,47 @@ The `dd_synth` DataFrame allows users to fine-tune aspects of the synthetic data
 
 ### Structure of `dd_synth`
 
-Here's an example of what a `dd_synth` might look like.
+Here's an example of what a `dd_synth` might look like:
 
-| table_name   | var_name | datatype   | dispersion_amount | winsorize_lower_limit | winsorize_upper_limit |
-| ------------ | -------- | ---------- | ----------------- | --------------------- | --------------------- |
-| demographics | age      | Integer    |                   |                       |                       |
-| demographics | gender   | Stringlist |                   |                       |                       |
-| sales        | amount   | Decimal    | 12.5              | 0.05                  | 0.95                  |
+| table_name | var_name                | should_be_synthesized | datatype   | method                     | dispersion_amount | winsorize_lower_limit | winsorize_upper_limit | p_modify_number_list_val |
+| ---------- | ----------------------- | --------------------- | ---------- | -------------------------- | ----------------- | --------------------- | --------------------- | ------------------------ |
+| sample1    | id_number               | 0                     | Integer    | add_normal_noise_and_round | 12.475            | 0.05                  | 0.95                  |                          |
+| sample1    | Standard_Normal         | 1                     | Decimal    | add_normal_noise           | 0.068             | 0.05                  | 0.95                  |                          |
+| sample1    | Normal_Mean5_SD2        | 1                     | Decimal    | add_normal_noise           | 0.134             | 0.05                  | 0.95                  |                          |
+| sample1    | Exponential_Lambda1     | 1                     | Decimal    | add_normal_noise           | 0.063             | 0.05                  | 0.95                  |                          |
+| sample1    | Gamma_Shape2_Scale2     | 1                     | Decimal    | add_normal_noise           | 0.182             | 0.05                  | 0.95                  |                          |
+| sample1    | Normal_Like_Int         | 1                     | Integer    | add_normal_noise_and_round | 1.163             | 0.05                  | 0.95                  |                          |
+| sample1    | Left_Heavy_Int          | 1                     | Integer    | add_normal_noise_and_round | 0.800             | 0.05                  | 0.95                  |                          |
+| sample2    | id_number               | 0                     | Integer    | add_normal_noise_and_round | 12.475            | 0.05                  | 0.95                  |                          |
+| sample2    | Multi_Modal             | 1                     | Decimal    | add_normal_noise           | 0.250             | 0.05                  | 0.95                  |                          |
+| sample2    | With_Missing_Data       | 1                     | Decimal    | add_normal_noise           | 0.068             | 0.05                  | 0.95                  |                          |
+| sample2    | Uniform_0_10            | 1                     | Decimal    | add_normal_noise           | 0.252             | 0.05                  | 0.95                  |                          |
+| sample2    | Beta_Alpha2_Beta5       | 1                     | Decimal    | add_normal_noise           | 0.012             | 0.05                  | 0.95                  |                          |
+| sample2    | Log_Normal_Mean0_Sigma1 | 1                     | Decimal    | add_normal_noise           | 0.066             | 0.05                  | 0.95                  |                          |
+| sample2    | Right_Heavy_Int         | 1                     | Integer    | add_normal_noise_and_round | 0.725             | 0.05                  | 0.95                  |                          |
+| sample2    | Multi_Modal_Int         | 1                     | Integer    | add_normal_noise_and_round | 3.200             | 0.05                  | 0.95                  |                          |
+| sample3    | id_number               | 0                     | Integer    | add_normal_noise_and_round | 12.475            | 0.05                  | 0.95                  |                          |
+| sample3    | Binomial_n10_p_one_half | 1                     | NumberList | random_shuffle             |                   |                       |                       | 0.15                     |
+| sample3    | Poisson_Lambda3         | 1                     | NumberList | random_shuffle             |                   |                       |                       | 0.15                     |
+| sample3    | Uniform_Int             | 1                     | Integer    | add_normal_noise_and_round | 2.600             | 0.05                  | 0.95                  |                          |
 
 - **table_name**: The name of the table containing the variable. This corresponds to the CSV file name without the `.csv` extension.
 - **var_name**: The name of the variable.
+- **should_be_synthesized**: A flag indicating whether the variable should be synthesized (1) or not (0).
 - **datatype**: The type of data for the variable. Options include:
   - String: a column of strings
   - Decimal: a column of floating point numbers
   - Integer: a column of integers
-  - Numberlist: a column of integers with a few unique values
-  - Stringlist: a column of strings with a few unique values
+  - NumberList: a column of integers with a few unique values
+  - StringList: a column of strings with a few unique values
   - DateTime: a column of DateTime-like values
-
-The datatype influences the manner in which the synthetic data is generated.
-
-The other columns of the `dd_synth` are relevant for only specific data types.
-
-- **dispersion_amount**: The standard deviation of the normal distribution used to generate the noise added to the real data to create the synthetic data. This is relevant for Decimals.
-- **winsorize_lower_limit** and **winsorize_upper_limit**: These parameters define the limits for Winsorization during the creation of synthetic data. The lowest values are adjusted to the value at the `winsorize_lower_limit` percentile, and the highest values are adjusted to the value at the `winsorize_upper_limit` percentile. Masked values are ignored during this process. This is relevant for Decimals.
+- **method**: The method used for synthesizing the variable. Examples include:
+  - `add_normal_noise`: Add normal noise to the data.
+  - `add_normal_noise_and_round`: Add normal noise and round to the nearest integer.
+  - `random_shuffle`: Shuffle the values randomly.
+- **dispersion_amount**: The standard deviation of the normal distribution used to generate the noise added to the real data to create the synthetic data. This is relevant for `Decimal` and `Integer` datatypes.
+- **winsorize_lower_limit** and **winsorize_upper_limit**: These parameters define the limits for Winsorization during the creation of synthetic data. The lowest values are adjusted to the value at the `winsorize_lower_limit` percentile, and the highest values are adjusted to the value at the `winsorize_upper_limit` percentile. Masked values are ignored during this process. This is relevant for `Decimal` and `Integer` datatypes.
+- **p_modify_number_list_val**: The probability of modifying a value in a `NumberList` column. This is relevant for `NumberList` datatypes.
 
 ## Kick-starting the `dd_synth` with `dd_obs` and `blanket_default_params`
 
