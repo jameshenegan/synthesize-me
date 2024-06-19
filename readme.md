@@ -283,3 +283,12 @@ Right now, the `blanket_default_params` are stored in multiple places:
 - `./synthesize_me/create_dd_synth/__init__.py`
 
 It would be better to store this in a central location. Perhaps something like a config file.
+
+# Batch Script
+
+```
+python3 generate_sample_data.py example-data/input --n 500 --seed 123
+python3 generate_dd_obs.py example-data/input example-data/metadata/dd_obs.csv
+python3 generate_dd_synth.py example-data/metadata/dd_obs.csv example-data/metadata/dd_synth.csv
+python3 generate_synthetic_data.py
+```
