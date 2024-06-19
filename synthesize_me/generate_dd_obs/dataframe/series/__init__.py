@@ -1,9 +1,19 @@
 from synthesize_me.generate_dd_obs.dataframe.series.guess_data_type import guess_data_type
 from synthesize_me.generate_dd_obs.dataframe.series.compute_obs_missing import compute_obs_missing
+import pandas as pd
+from typing import Dict, Any
 
-def make_dd_obs_entry_for_series(series, metadata):
+def make_dd_obs_entry_for_series(series: pd.Series, metadata: Dict[str, str]) -> Dict[str, Any]:
+    """
+    Generate the dd_obs entry for a specific series (variable) in the table.
 
+    Parameters:
+    - series (pd.Series): The data series to analyze.
+    - metadata (Dict[str, str]): Metadata containing 'table_name' and 'var_name'.
 
+    Returns:
+    - Dict[str, Any]: A dictionary containing the dd_obs entry for the variable.
+    """
     table_name = metadata['table_name']
     var_name = metadata['var_name']        
 
@@ -12,18 +22,16 @@ def make_dd_obs_entry_for_series(series, metadata):
     obs_datatype = guess_data_type(series)
     obs_missing = compute_obs_missing(series)
 
-
-    dd_obs_entry = {
+    dd_obs_entry: Dict[str, Any] = {
         'table_name': table_name,
         'var_name': var_name,
-        'obs_numobs' : obs_numobs,
-        'obs_distinct' : obs_distinct,
-        'obs_missing' : obs_missing,
-        'obs_datatype': obs_datatype,       
+        'obs_numobs': obs_numobs,
+        'obs_distinct': obs_distinct,
+        'obs_missing': obs_missing,
+        'obs_datatype': obs_datatype,
     }
 
     if obs_datatype in ['Integer', 'Decimal']:
-
         obs_mean = series.mean()
         obs_std = series.std()
         obs_min = series.min()
@@ -40,11 +48,9 @@ def make_dd_obs_entry_for_series(series, metadata):
         dd_obs_entry['obs_p_75'] = obs_p_75
         dd_obs_entry['obs_max'] = obs_max
 
-
     elif obs_datatype in ['StringList', 'NumberList']:
         obs_permissible_values = list(series.dropna().unique())
         obs_permissible_values.sort()
         dd_obs_entry['obs_permissible_values'] = obs_permissible_values
-             
 
     return dd_obs_entry
