@@ -271,3 +271,15 @@ For more details, see the [Next Steps for the generate_dd_obs module](./synthesi
 In general, this work will go in `synthesize_me/compare`
 
 For more details, see the [Next Steps for the compare module](./synthesize_me/compare/next_steps.md).
+
+### Organization
+
+#### Store `blanket_default_params` in a central location.
+
+Right now, the `blanket_default_params` are stored in multiple places:
+
+- `./generate_dd_synth.py`
+- `./synthesize_me/__init__.py`
+- `./synthesize_me/create_dd_synth/__init__.py`
+
+It would be better to store this in a central location. Perhaps something like a config file.
