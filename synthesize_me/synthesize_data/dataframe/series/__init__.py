@@ -1,5 +1,6 @@
 from .decimal.add_normal_noise import add_normal_noise
 from .decimal.winsorize_and_add_normal_noise import winsorize_and_add_normal_noise
+from .decimal.bxcx_normnoise_invbxcx import bxcx_normnoise_invbxcx
 from .integer.add_normal_noise_and_round import add_normal_noise_and_round
 from .numberlist.random_shuffle import random_shuffle
 
@@ -18,6 +19,9 @@ def synthesize_series(series, metadata):
             metadata['winsorize_lower_limit'], 
             metadata['winsorize_upper_limit']
             )
+    
+    elif datatype == 'Decimal' and method == 'bxcx_normnoise_invbxcx':
+        return bxcx_normnoise_invbxcx(series, metadata['dispersion_amount'])
     
     elif datatype == 'Integer' and method == 'add_normal_noise_and_round':
         return add_normal_noise_and_round(series, metadata['dispersion_amount'])

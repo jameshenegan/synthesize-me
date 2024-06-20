@@ -58,6 +58,9 @@ def main(input_file, output_file, dispersion_factor, winsorize_lower_limit, wins
         if row['var_name'] == 'Normal_Mean5_SD2':
             dd_synth.at[i, 'method'] = 'winsorize_and_add_normal_noise'
 
+        if row['var_name']  == 'Exponential_Lambda1':
+            dd_synth.at[i, 'method'] = 'bxcx_normnoise_invbxcx'
+
 
 
     # Save dd_synth to CSV

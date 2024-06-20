@@ -2,7 +2,7 @@ table_name,var_name,should_be_synthesized,datatype,method,dispersion_amount,wins
 sample1,id_number,0,,,,,,
 sample1,Standard_Normal,1,Decimal,add_normal_noise,0.0679980880621147,0.05,0.95,
 sample1,Normal_Mean5_SD2,1,Decimal,winsorize_and_add_normal_noise,0.13358063726462274,0.05,0.95,
-sample1,Exponential_Lambda1,1,Decimal,add_normal_noise,0.06281851040116053,0.05,0.95,
+sample1,Exponential_Lambda1,1,Decimal,bxcx_normnoise_invbxcx,0.06281851040116053,0.05,0.95,
 sample1,Gamma_Shape2_Scale2,1,Decimal,add_normal_noise,0.182407740489965,0.05,0.95,
 sample1,Normal_Like_Int,1,Integer,add_normal_noise_and_round,1.1625,0.05,0.95,
 sample1,Left_Heavy_Int,1,Integer,add_normal_noise_and_round,0.8,0.05,0.95,
