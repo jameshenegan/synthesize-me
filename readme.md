@@ -22,27 +22,27 @@ The `dd_synth` DataFrame allows users to fine-tune aspects of the synthetic data
 
 Here's an example of what a `dd_synth` might look like:
 
-| table_name | var_name                | should_be_synthesized | datatype   | method                     | dispersion_amount | winsorize_lower_limit | winsorize_upper_limit | p_modify_number_list_val |
-| ---------- | ----------------------- | --------------------- | ---------- | -------------------------- | ----------------- | --------------------- | --------------------- | ------------------------ |
-| sample1    | id_number               | 0                     |            |                            |                   |                       |                       |                          |
-| sample1    | Standard_Normal         | 1                     | Decimal    | add_normal_noise           | 0.068             | 0.05                  | 0.95                  |                          |
-| sample1    | Normal_Mean5_SD2        | 1                     | Decimal    | add_normal_noise           | 0.134             | 0.05                  | 0.95                  |                          |
-| sample1    | Exponential_Lambda1     | 1                     | Decimal    | add_normal_noise           | 0.063             | 0.05                  | 0.95                  |                          |
-| sample1    | Gamma_Shape2_Scale2     | 1                     | Decimal    | add_normal_noise           | 0.182             | 0.05                  | 0.95                  |                          |
-| sample1    | Normal_Like_Int         | 1                     | Integer    | add_normal_noise_and_round | 1.163             | 0.05                  | 0.95                  |                          |
-| sample1    | Left_Heavy_Int          | 1                     | Integer    | add_normal_noise_and_round | 0.800             | 0.05                  | 0.95                  |                          |
-| sample2    | id_number               | 0                     |            |                            |                   |                       |                       |                          |
-| sample2    | Multi_Modal             | 1                     | Decimal    | add_normal_noise           | 0.250             | 0.05                  | 0.95                  |                          |
-| sample2    | With_Missing_Data       | 1                     | Decimal    | add_normal_noise           | 0.068             | 0.05                  | 0.95                  |                          |
-| sample2    | Uniform_0_10            | 1                     | Decimal    | add_normal_noise           | 0.252             | 0.05                  | 0.95                  |                          |
-| sample2    | Beta_Alpha2_Beta5       | 1                     | Decimal    | add_normal_noise           | 0.012             | 0.05                  | 0.95                  |                          |
-| sample2    | Log_Normal_Mean0_Sigma1 | 1                     | Decimal    | add_normal_noise           | 0.066             | 0.05                  | 0.95                  |                          |
-| sample2    | Right_Heavy_Int         | 1                     | Integer    | add_normal_noise_and_round | 0.725             | 0.05                  | 0.95                  |                          |
-| sample2    | Multi_Modal_Int         | 1                     | Integer    | add_normal_noise_and_round | 3.200             | 0.05                  | 0.95                  |                          |
-| sample3    | id_number               | 0                     |            |                            |                   |                       |                       |                          |
-| sample3    | Binomial_n10_p_one_half | 1                     | NumberList | random_shuffle             |                   |                       |                       | 0.15                     |
-| sample3    | Poisson_Lambda3         | 1                     | NumberList | random_shuffle             |                   |                       |                       | 0.15                     |
-| sample3    | Uniform_Int             | 1                     | Integer    | add_normal_noise_and_round | 2.600             | 0.05                  | 0.95                  |                          |
+| table_name | var_name                | should_be_synthesized | datatype   | method                         | dispersion_amount | winsorize_lower_limit | winsorize_upper_limit | p_modify_number_list_val |
+| ---------- | ----------------------- | --------------------- | ---------- | ------------------------------ | ----------------- | --------------------- | --------------------- | ------------------------ |
+| sample1    | id_number               | 0                     |            |                                |                   |                       |                       |                          |
+| sample1    | Standard_Normal         | 1                     | Decimal    | add_normal_noise               | 0.068             |                       |                       |                          |
+| sample1    | Normal_Mean5_SD2        | 1                     | Decimal    | winsorize_and_add_normal_noise | 0.134             | 0.05                  | 0.95                  |                          |
+| sample1    | Exponential_Lambda1     | 1                     | Decimal    | bxcx_normnoise_invbxcx         | 0.063             |                       |                       |                          |
+| sample1    | Gamma_Shape2_Scale2     | 1                     | Decimal    | add_normal_noise               | 0.182             |                       |                       |                          |
+| sample1    | Normal_Like_Int         | 1                     | Integer    | add_normal_noise_and_round     | 1.163             |                       |                       |                          |
+| sample1    | Left_Heavy_Int          | 1                     | Integer    | add_normal_noise_and_round     | 0.800             |                       |                       |                          |
+| sample2    | id_number               | 0                     |            |                                |                   |                       |                       |                          |
+| sample2    | Multi_Modal             | 1                     | Decimal    | add_normal_noise               | 0.250             |                       |                       |                          |
+| sample2    | With_Missing_Data       | 1                     | Decimal    | add_normal_noise               | 0.068             |                       |                       |                          |
+| sample2    | Uniform_0_10            | 1                     | Decimal    | add_normal_noise               | 0.252             |                       |                       |                          |
+| sample2    | Beta_Alpha2_Beta5       | 1                     | Decimal    | add_normal_noise               | 0.012             |                       |                       |                          |
+| sample2    | Log_Normal_Mean0_Sigma1 | 1                     | Decimal    | add_normal_noise               | 0.066             |                       |                       |                          |
+| sample2    | Right_Heavy_Int         | 1                     | Integer    | add_normal_noise_and_round     | 0.725             |                       |                       |                          |
+| sample2    | Multi_Modal_Int         | 1                     | Integer    | add_normal_noise_and_round     | 3.200             |                       |                       |                          |
+| sample3    | id_number               | 0                     |            |                                |                   |                       |                       |                          |
+| sample3    | Binomial_n10_p_one_half | 1                     | NumberList | random_shuffle                 |                   |                       |                       | 0.15                     |
+| sample3    | Poisson_Lambda3         | 1                     | NumberList | random_shuffle                 |                   |                       |                       | 0.15                     |
+| sample3    | Uniform_Int             | 1                     | Integer    | add_normal_noise_and_round     | 2.600             |                       |                       |                          |
 
 Here are explanations of what each column of the `dd_synth` represents:
 
@@ -59,6 +59,8 @@ Here are explanations of what each column of the `dd_synth` represents:
 - **method**: The method used for synthesizing the variable. Examples include:
   - `add_normal_noise`: Add normal noise to the data.
   - `add_normal_noise_and_round`: Add normal noise and round to the nearest integer.
+  - `winsorize_and_add_normal_noise`: Winsorize the data and then add normal noise.
+  - `bxcx_normnoise_invbxcx`: Apply a Box-Cox transformation, add normal noise, and then apply the inverse Box-Cox transformation.
   - `random_shuffle`: Shuffle the values randomly.
 - **dispersion_amount**: The standard deviation of the normal distribution used to generate the noise added to the real data to create the synthetic data. This is relevant for `Decimal` and `Integer` datatypes.
 - **winsorize_lower_limit** and **winsorize_upper_limit**: These parameters define the limits for Winsorization during the creation of synthetic data. The lowest values are adjusted to the value at the `winsorize_lower_limit` percentile, and the highest values are adjusted to the value at the `winsorize_upper_limit` percentile. Masked values are ignored during this process. This is relevant for `Decimal` and `Integer` datatypes.

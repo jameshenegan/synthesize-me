@@ -56,10 +56,15 @@ def main(input_file, output_file, dispersion_factor, winsorize_lower_limit, wins
                 dd_synth.at[i, v] = np.nan
 
         if row['var_name'] == 'Normal_Mean5_SD2':
+            row['method'] = 'winsorize_and_add_normal_noise'
             dd_synth.at[i, 'method'] = 'winsorize_and_add_normal_noise'
 
         if row['var_name']  == 'Exponential_Lambda1':
             dd_synth.at[i, 'method'] = 'bxcx_normnoise_invbxcx'
+
+        if row['method'] in ['add_normal_noise', 'add_normal_noise_and_round', 'bxcx_normnoise_invbxcx']:
+            dd_synth.at[i, 'winsorize_lower_limit'] = np.nan
+            dd_synth.at[i, 'winsorize_upper_limit'] = np.nan
 
 
 
