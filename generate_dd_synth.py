@@ -35,19 +35,28 @@ def main(input_file, output_file, dispersion_factor, winsorize_lower_limit, wins
     logging.info("Generating dd_synth with default parameters.")
     dd_synth = create_dd_synth(dd_obs, blanket_default_params)
 
-    values_to_remove = [c for c in dd_synth.columns if c not in [
-        'table_name',
-        'var_name',
-        'should_be_synthesized'
-    ]
-    ]
-
+    # Update certain rows of the dd_synth
     for i, row in dd_synth.iterrows():
+
+        # Update the dd_synth for variables with a 'var_name' of 'id_number'
         if row['var_name'] == 'id_number':
+
+            # Make it so these variables don't get synthesized
             dd_synth.at[i, 'should_be_synthesized'] = 0
+            
+            # Remove other information in the dd_synth for these variables
+            values_to_remove = [c for c in dd_synth.columns if c not in [
+                'table_name',
+                'var_name',
+                'should_be_synthesized'
+                ]
+            ]
 
             for v in values_to_remove:
                 dd_synth.at[i, v] = np.nan
+
+        if row['var_name'] == 'Normal_Mean5_SD2':
+            dd_synth.at[i, 'method'] = 'winsorize_and_add_normal_noise'
 
 
 
