@@ -1,6 +1,8 @@
 import argparse
 import logging
 import pandas as pd
+import numpy as np 
+
 from synthesize_me.create_dd_synth import create_dd_synth
 
 def main(input_file, output_file, dispersion_factor, winsorize_lower_limit, winsorize_upper_limit):
@@ -33,9 +35,20 @@ def main(input_file, output_file, dispersion_factor, winsorize_lower_limit, wins
     logging.info("Generating dd_synth with default parameters.")
     dd_synth = create_dd_synth(dd_obs, blanket_default_params)
 
+    values_to_remove = [c for c in dd_synth.columns if c not in [
+        'table_name',
+        'var_name',
+        'should_be_synthesized'
+    ]
+    ]
+
     for i, row in dd_synth.iterrows():
         if row['var_name'] == 'id_number':
             dd_synth.at[i, 'should_be_synthesized'] = 0
+
+            for v in values_to_remove:
+                dd_synth.at[i, v] = np.nan
+
 
 
     # Save dd_synth to CSV
