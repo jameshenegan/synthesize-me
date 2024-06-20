@@ -24,14 +24,14 @@ Here's an example of what a `dd_synth` might look like:
 
 | table_name | var_name                | should_be_synthesized | datatype   | method                     | dispersion_amount | winsorize_lower_limit | winsorize_upper_limit | p_modify_number_list_val |
 | ---------- | ----------------------- | --------------------- | ---------- | -------------------------- | ----------------- | --------------------- | --------------------- | ------------------------ |
-| sample1    | id_number               | 0                     | Integer    | add_normal_noise_and_round | 12.475            | 0.05                  | 0.95                  |                          |
+| sample1    | id_number               | 0                     |            |                            |                   |                       |                       |                          |
 | sample1    | Standard_Normal         | 1                     | Decimal    | add_normal_noise           | 0.068             | 0.05                  | 0.95                  |                          |
 | sample1    | Normal_Mean5_SD2        | 1                     | Decimal    | add_normal_noise           | 0.134             | 0.05                  | 0.95                  |                          |
 | sample1    | Exponential_Lambda1     | 1                     | Decimal    | add_normal_noise           | 0.063             | 0.05                  | 0.95                  |                          |
 | sample1    | Gamma_Shape2_Scale2     | 1                     | Decimal    | add_normal_noise           | 0.182             | 0.05                  | 0.95                  |                          |
 | sample1    | Normal_Like_Int         | 1                     | Integer    | add_normal_noise_and_round | 1.163             | 0.05                  | 0.95                  |                          |
 | sample1    | Left_Heavy_Int          | 1                     | Integer    | add_normal_noise_and_round | 0.800             | 0.05                  | 0.95                  |                          |
-| sample2    | id_number               | 0                     | Integer    | add_normal_noise_and_round | 12.475            | 0.05                  | 0.95                  |                          |
+| sample2    | id_number               | 0                     |            |                            |                   |                       |                       |                          |
 | sample2    | Multi_Modal             | 1                     | Decimal    | add_normal_noise           | 0.250             | 0.05                  | 0.95                  |                          |
 | sample2    | With_Missing_Data       | 1                     | Decimal    | add_normal_noise           | 0.068             | 0.05                  | 0.95                  |                          |
 | sample2    | Uniform_0_10            | 1                     | Decimal    | add_normal_noise           | 0.252             | 0.05                  | 0.95                  |                          |
@@ -39,7 +39,7 @@ Here's an example of what a `dd_synth` might look like:
 | sample2    | Log_Normal_Mean0_Sigma1 | 1                     | Decimal    | add_normal_noise           | 0.066             | 0.05                  | 0.95                  |                          |
 | sample2    | Right_Heavy_Int         | 1                     | Integer    | add_normal_noise_and_round | 0.725             | 0.05                  | 0.95                  |                          |
 | sample2    | Multi_Modal_Int         | 1                     | Integer    | add_normal_noise_and_round | 3.200             | 0.05                  | 0.95                  |                          |
-| sample3    | id_number               | 0                     | Integer    | add_normal_noise_and_round | 12.475            | 0.05                  | 0.95                  |                          |
+| sample3    | id_number               | 0                     |            |                            |                   |                       |                       |                          |
 | sample3    | Binomial_n10_p_one_half | 1                     | NumberList | random_shuffle             |                   |                       |                       | 0.15                     |
 | sample3    | Poisson_Lambda3         | 1                     | NumberList | random_shuffle             |                   |                       |                       | 0.15                     |
 | sample3    | Uniform_Int             | 1                     | Integer    | add_normal_noise_and_round | 2.600             | 0.05                  | 0.95                  |                          |
