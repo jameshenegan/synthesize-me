@@ -286,11 +286,32 @@ Right now, the `blanket_default_params` are stored in multiple places:
 
 It would be better to store this in a central location. Perhaps something like a config file.
 
+### Logging
+
+I think it would be good idea to add a 'logging' feature to the `synthesize_data` module. The idea is that when a series gets synthesized, you could go ahead and compare the original series with the synthesized series and check to see if they are different at all.
+
+### What to do when a series has a small number of observed values?
+
+Consider a NumberList that has less than 100 observed values. There is a chance that the 'synthesized' version of the NumberList will look exactly the same as the original NumberList. How do we deal with this situation?
+
+### Add tests
+
+Make it easy to test individual methods.
+
 # Batch Script
+
+Use the following commands to
+
+- create sample data
+- create a DDobs
+- create a DDsynth
+- create synthetic data
+- compare the synthesized data with the original data
 
 ```
 python3 generate_sample_data.py example-data/input --n 500 --seed 123
 python3 generate_dd_obs.py example-data/input example-data/metadata/dd_obs.csv
 python3 generate_dd_synth.py example-data/metadata/dd_obs.csv example-data/metadata/dd_synth.csv
 python3 generate_synthetic_data.py
+python3 compare.py
 ```
