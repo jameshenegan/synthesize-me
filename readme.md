@@ -278,9 +278,18 @@ I think it would be good idea to add a 'logging' feature to the `synthesize_data
 
 Consider a NumberList that has less than 100 observed values. There is a chance that the 'synthesized' version of the NumberList will look exactly the same as the original NumberList. How do we deal with this situation?
 
+### Create more sample data
+
+We can continue to add to the sample data that gets created.
+
+- String Data
+- Data with a small number of observations
+
 ### Add tests
 
 Make it easy to test individual methods.
+
+For example, consider the situtation when a series has a small number of observed values.
 
 # Batch Script
 
