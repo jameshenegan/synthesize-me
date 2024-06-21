@@ -153,9 +153,22 @@ These parameters are used to automatically generate the `dd_synth` DataFrame, gu
 
 ## Example Usage
 
-This section demonstrates how to create sample data and metadata that can be used to develop and test the `synthesize_me` package. The example involves generating synthetic data, creating metadata, and using this metadata to generate new synthetic data.
+Ultimately, we want to get to a place where a user can use the package in the following manner:
 
-### Create Sample Data and Metadata to be used by the package
+```python
+from synthesize_me import synthesize_folder_of_csv_files
+
+input_path = 'example-data/input'
+output_path = 'example-data/output'
+
+dd_obs, dd_synth = synthesize_folder_of_csv_files(input_path, output_path)
+```
+
+The synthetic data should be saved in the `example-data/output` directory.
+
+### Using and Testing the Modules
+
+As we develop the package, we may want to test the various modules of the package independently. This section demonstrates one way to do this. But first, we will generate some sample data that can be consumed by the modules.
 
 #### Generate Sample Data
 
@@ -218,35 +231,6 @@ This should create the following CSV file: `./example-data/metadata/dd_synth.csv
 ### Creating Synthetic Data from the Sample Data
 
 Finally, we use the `synthesize_me` package to generate synthetic data based on the sample data and the metadata we created. The `synthesize_folder_of_csv_files` function reads the input data and metadata, and produces synthetic versions of the CSV files.
-
-#### General Usage
-
-Use the following code to synthesize the data:
-
-```python
-from synthesize_me import synthesize_folder_of_csv_files
-
-input_path = 'example-data/input'
-output_path = 'example-data/output'
-
-dd_obs, dd_synth = synthesize_folder_of_csv_files(input_path, output_path)
-```
-
-The synthetic data should be saved in the `example-data/output` directory. This synthetic data can be used for further testing and development, ensuring that the `synthesize_me` package works correctly with various types of data.
-
-#### Example Script
-
-There is a sample script that can be executed here:
-
-```bash
-python generate_synthetic_data.py
-```
-
-or
-
-```bash
-python3 generate_synthetic_data.py
-```
 
 ## Next Steps
 
